@@ -1,0 +1,331 @@
+[gd_scene load_steps=15 format=3 uid="uid://crrvooqis0le5"]
+
+[ext_resource type="Script" path="res://scenes/ui/gui.gd" id="1_ej73i"]
+[ext_resource type="FontFile" uid="uid://cika8hbmvm41q" path="res://assets/fonts/digits.ttf" id="1_vf3ba"]
+[ext_resource type="Texture2D" uid="uid://x5oqvvxljxv" path="res://assets/sprites/ui/game_on.png" id="2_tg4e8"]
+[ext_resource type="Texture2D" uid="uid://brr1tj544j73u" path="res://assets/sprites/ui/game_press.png" id="4_4yj0d"]
+[ext_resource type="Texture2D" uid="uid://bdad6dwrfj0nu" path="res://assets/sprites/ui/black_x.png" id="5_6dbqm"]
+[ext_resource type="Texture2D" uid="uid://c2drnw7kk1y0f" path="res://assets/sprites/ui/ui.png" id="5_7cfcn"]
+[ext_resource type="FontFile" uid="uid://d0v4ume2tii2s" path="res://assets/fonts/mine_sweeper.ttf" id="5_7u54k"]
+[ext_resource type="Texture2D" uid="uid://c8k5dualvjeji" path="res://assets/sprites/ui/settings.png" id="5_8r2iv"]
+[ext_resource type="Texture2D" uid="uid://eospy1amojls" path="res://assets/sprites/ui/settings_press.png" id="6_aiwxk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k3tvf"]
+font = ExtResource("1_vf3ba")
+font_size = 68
+font_color = Color(0.819608, 0.156863, 0.156863, 1)
+shadow_size = 0
+
+[sub_resource type="Theme" id="Theme_725dx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jyog5"]
+font = ExtResource("5_7u54k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6gbgn"]
+font = ExtResource("5_7u54k")
+font_size = 15
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ymg78"]
+allow_unpress = true
+
+[node name="gui" type="CanvasLayer"]
+script = ExtResource("1_ej73i")
+
+[node name="mine_count" type="Label" parent="."]
+offset_left = 14.0
+offset_top = -106.0
+offset_right = 344.0
+offset_bottom = 103.0
+text = "10"
+label_settings = SubResource("LabelSettings_k3tvf")
+vertical_alignment = 2
+
+[node name="timer" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -428.0
+offset_top = -131.0
+offset_right = -5.0
+offset_bottom = 78.0
+text = "0"
+label_settings = SubResource("LabelSettings_k3tvf")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="start_game" type="TextureButton" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 15.0
+offset_right = 32.0
+offset_bottom = 79.0
+grow_horizontal = 2
+texture_normal = ExtResource("2_tg4e8")
+texture_pressed = ExtResource("4_4yj0d")
+
+[node name="settings" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.651
+anchor_right = 0.651
+offset_left = -32.28
+offset_top = 15.0
+offset_right = 31.72
+offset_bottom = 79.0
+grow_horizontal = 2
+texture_normal = ExtResource("5_8r2iv")
+texture_pressed = ExtResource("6_aiwxk")
+
+[node name="settings_panel" type="NinePatchRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.244
+anchor_top = 0.5
+anchor_right = 0.244
+anchor_bottom = 0.5
+offset_left = -248.32
+offset_top = -257.0
+offset_right = 247.68
+offset_bottom = 239.0
+texture = ExtResource("5_7cfcn")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="close_holder" type="NinePatchRect" parent="settings_panel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 21.0
+offset_right = 475.0
+offset_bottom = 88.0
+texture = ExtResource("5_7cfcn")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="x_button" type="TextureButton" parent="settings_panel/close_holder"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 50.0
+offset_bottom = 50.0
+texture_normal = ExtResource("5_6dbqm")
+
+[node name="customize_text_holder" type="NinePatchRect" parent="settings_panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 221.0
+offset_bottom = 92.0
+texture = ExtResource("5_7cfcn")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="PanelContainer" type="PanelContainer" parent="settings_panel/customize_text_holder"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 179.0
+offset_bottom = 50.0
+theme = SubResource("Theme_725dx")
+
+[node name="Label" type="Label" parent="settings_panel/customize_text_holder/PanelContainer"]
+layout_mode = 2
+text = "Customize"
+label_settings = SubResource("LabelSettings_jyog5")
+horizontal_alignment = 1
+
+[node name="field_settings_holder" type="GridContainer" parent="settings_panel"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 97.0
+offset_right = 469.0
+offset_bottom = 211.0
+columns = 3
+
+[node name="x" type="PanelContainer" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_panel/field_settings_holder/x"]
+layout_mode = 2
+text = " Horizontal Size "
+label_settings = SubResource("LabelSettings_6gbgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blank" type="MarginContainer" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="x_edit" type="TextEdit" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_fonts/font = ExtResource("5_7u54k")
+theme_override_font_sizes/font_size = 15
+text = "9"
+
+[node name="y" type="PanelContainer" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="settings_panel/field_settings_holder/y"]
+layout_mode = 2
+text = "vertical size"
+label_settings = SubResource("LabelSettings_6gbgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blank2" type="MarginContainer" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="y_edit" type="TextEdit" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_fonts/font = ExtResource("5_7u54k")
+theme_override_font_sizes/font_size = 15
+text = "9"
+
+[node name="bomb count" type="PanelContainer" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="settings_panel/field_settings_holder/bomb count"]
+layout_mode = 2
+text = "Bomb count"
+label_settings = SubResource("LabelSettings_6gbgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blank3" type="MarginContainer" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="bomb_edit" type="TextEdit" parent="settings_panel/field_settings_holder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_fonts/font = ExtResource("5_7u54k")
+theme_override_font_sizes/font_size = 15
+text = "10"
+
+[node name="standard_diff_holder" type="NinePatchRect" parent="settings_panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 227.0
+offset_right = 411.0
+offset_bottom = 294.0
+texture = ExtResource("5_7cfcn")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="PanelContainer" type="PanelContainer" parent="settings_panel/standard_diff_holder"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 369.0
+offset_bottom = 50.0
+theme = SubResource("Theme_725dx")
+
+[node name="Label" type="Label" parent="settings_panel/standard_diff_holder/PanelContainer"]
+layout_mode = 2
+text = "Standard Difficulties"
+label_settings = SubResource("LabelSettings_jyog5")
+horizontal_alignment = 1
+
+[node name="diff_buttons" type="HBoxContainer" parent="settings_panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 304.0
+offset_right = 469.0
+offset_bottom = 346.0
+
+[node name="easy" type="Button" parent="settings_panel/diff_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_7u54k")
+action_mode = 0
+text = "Easy"
+
+[node name="medium" type="Button" parent="settings_panel/diff_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_7u54k")
+text = "Medium"
+
+[node name="expert" type="Button" parent="settings_panel/diff_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_7u54k")
+text = "expert"
+
+[node name="skin" type="NinePatchRect" parent="settings_panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 354.0
+offset_right = 143.0
+offset_bottom = 421.0
+texture = ExtResource("5_7cfcn")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="PanelContainer" type="PanelContainer" parent="settings_panel/skin"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 101.0
+offset_bottom = 50.0
+theme = SubResource("Theme_725dx")
+
+[node name="Label" type="Label" parent="settings_panel/skin/PanelContainer"]
+layout_mode = 2
+text = "Skin"
+label_settings = SubResource("LabelSettings_jyog5")
+horizontal_alignment = 1
+
+[node name="skin_buttons" type="HBoxContainer" parent="settings_panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 429.0
+offset_right = 469.0
+offset_bottom = 471.0
+
+[node name="dot" type="Button" parent="settings_panel/skin_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_7u54k")
+toggle_mode = true
+button_pressed = true
+action_mode = 0
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_ymg78")
+text = "Dots"
+
+[node name="num" type="Button" parent="settings_panel/skin_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_7u54k")
+toggle_mode = true
+action_mode = 0
+keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_ymg78")
+text = "Numbers"
