@@ -71,7 +71,8 @@ func _on_cell_flagged(flagged):
 func _on_cell_clicked(id):
 	if (id == -1):
 		lost()
-	open += 1
+	else:
+		open += 1
 	
 	if (open == dimension.x * dimension.y - count):
 		win()

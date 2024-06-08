@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Actually Good 3D Minesweeper"
+config/name="Regular minesweeper"
+config/description="Regular minesweeper"
+config/version="1.0"
 run/main_scene="res://scenes/mine_field/mine_field.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/sprites/ui/game_on.png"
