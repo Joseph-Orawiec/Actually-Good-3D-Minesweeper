@@ -63,8 +63,8 @@ func _on_text_changed(n):
 	var y = int(y.text)
 	var count = int(bomb.text)
 	
-	if (count > x * y):
-		bomb.text = str(x * y)
+	if (count >= x * y):
+		bomb.text = str(x * y - 1)
 	
 	pass # Replace with function body.
 
