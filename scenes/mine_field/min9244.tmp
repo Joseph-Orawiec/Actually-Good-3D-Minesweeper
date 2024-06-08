@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c445nsh5u5upc"]
+
+[ext_resource type="Script" path="res://scenes/mine_field/mine_field.gd" id="1_xwks4"]
+[ext_resource type="PackedScene" uid="uid://b5ln8co377bft" path="res://scenes/player_camera/camera_2d.tscn" id="2_sg4rw"]
+[ext_resource type="PackedScene" uid="uid://crrvooqis0le5" path="res://scenes/ui/gui.tscn" id="3_3ee7v"]
+
+[node name="MineField" type="Node2D"]
+script = ExtResource("1_xwks4")
+
+[node name="gui" parent="." instance=ExtResource("3_3ee7v")]
+
+[node name="Camera2D" parent="." instance=ExtResource("2_sg4rw")]
+position = Vector2(34, 205)

@@ -29,7 +29,7 @@ func _process(delta):
 
 # Called when first constructed
 func _init():
-	_on_init(Vector2(9, 9), 10)
+	_on_init(dimension, count)
 
 # 
 func _on_init(d, c):
@@ -46,8 +46,8 @@ func _on_init(d, c):
 	
 	var cell = preload("res://scenes/cell/cell.tscn")
 	#initialize the game array full of 0's and setup cells
-	for y in dimension.x:
-		for x in dimension.y:
+	for x in dimension.x:
+		for y in dimension.y:
 			field_dict[Vector2(x, y)] = 0
 			# Setup cells
 			node_dict[Vector2(x, y)] = cell.instantiate()
@@ -162,3 +162,7 @@ func _on_chord_canceled(v):
 		var current_node = node_dict.get(v + u, null)
 		if current_node != null: # if exists
 			current_node.chord_cancel()
+
+func _input(event):
+	if event.is_action('space'):
+		$gui._on_start_game_pressed()

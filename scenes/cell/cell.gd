@@ -16,6 +16,8 @@ var is_pressed = false
 var is_flagged = false
 var is_chording = false
 
+var pause = false
+
 @onready var sprite_node = $Sprite2D # node reference to change the texture
 
 # Called when the node enters the scene tree for the first time.
@@ -80,11 +82,13 @@ func click():
 
 # special flag function for when a game is won, flag all other mines
 func won():
+	pause = true
 	if id == -1 and not is_flagged:
 		flagged.emit(true)
 		sprite_node.set_texture(Assets.get_sprite('flag'))
 		
 func lost():
+	pause = true
 	if id == -1 and not is_pressed:
 		sprite_node.set_texture(Assets.get_sprite('mine_reveal'))
 	
@@ -124,16 +128,18 @@ func reset():
 # Signal stuff: mouse enter/leave
 func _on_mouse_entered():
 	# start polling if mouse is on cell 
-	set_process(true)
+	if not pause:
+		set_process(true)
 
 func _on_mouse_exited():
-	# Stop polling if mouse isn't on cell
-	set_process(false)
-	# only reset the sprite if it's not flagged and not already pressed 
-	if not is_pressed and not is_flagged:
-		sprite_node.set_texture(Assets.get_sprite('unkown'))
-		
-	# make sure to reset cells' sprites if stopped chording (was about to but moved mouse which means there was no release)
-	if is_chording:
-		is_chording = false
-		chord_canceled.emit(v)
+	if not pause:
+		# Stop polling if mouse isn't on cell
+		set_process(false)
+		# only reset the sprite if it's not flagged and not already pressed 
+		if not is_pressed and not is_flagged:
+			sprite_node.set_texture(Assets.get_sprite('unkown'))
+			
+		# make sure to reset cells' sprites if stopped chording (was about to but moved mouse which means there was no release)
+		if is_chording:
+			is_chording = false
+			chord_canceled.emit(v)

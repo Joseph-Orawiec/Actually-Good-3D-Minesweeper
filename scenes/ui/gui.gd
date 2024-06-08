@@ -111,8 +111,15 @@ func _on_start_game_pressed():
 func flag_update(is_flag):
 	if is_flag:
 		$mine_count.text = str(int($mine_count.text) - 1)
+		
+		if int($mine_count.text) < 0:
+			$mine_count.position = Vector2(14, -106)
+		
 	else:
 		$mine_count.text = str(int($mine_count.text) + 1)
+		if int($mine_count.text) >= 0:
+			$mine_count.position = Vector2(14, -131)
+		
 
 func timer_start():
 	set_process(true)
@@ -145,6 +152,7 @@ func _input(event):
 
 func end_game(is_won):
 	set_process(false)
+	$timer.text = str(snapped(timer, .001))
 	if is_won:
 		$start_game.texture_normal = preload('res://assets/sprites/ui/game_won.png')
 	else:

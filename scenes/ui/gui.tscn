@@ -33,9 +33,9 @@ script = ExtResource("1_ej73i")
 
 [node name="mine_count" type="Label" parent="."]
 offset_left = 14.0
-offset_top = -106.0
+offset_top = -131.0
 offset_right = 344.0
-offset_bottom = 103.0
+offset_bottom = 78.0
 text = "10"
 label_settings = SubResource("LabelSettings_k3tvf")
 vertical_alignment = 2
