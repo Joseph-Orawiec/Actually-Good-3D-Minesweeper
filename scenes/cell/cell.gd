@@ -69,16 +69,20 @@ func _process(delta):
 			chord_released.emit(v)
 
 # player click
-func click():
+func click(is_emitting:bool = true):
 	# Whenever player clicks a mine or a cell is clicked indirectly via chording or 0 chain
 	if not is_flagged:
 		if not is_pressed:
 			is_pressed = true
-			set_process(false)
 			sprite_node.set_texture(Assets.get_sprite(id))
-			if id == 0:
+			
+			# prevent trying to zero chain recursively as previously implemented
+			if id == 0 and is_emitting:
 				zero_chain.emit(v)
+			
 			clicked.emit(id)
+
+# special click function in order to not generate
 
 # special flag function for when a game is won, flag all other mines
 func won():

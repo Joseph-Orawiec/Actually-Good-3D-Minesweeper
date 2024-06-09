@@ -1,9 +1,7 @@
-res://scenes/ui/gui.tscn
-res://scenes/ui/skin_group.tres
 res://scenes/cell/cell.tscn
-res://scenes/mine_field/mine_field.tscn
-res://scenes/player_camera/camera_2d.tscn
 res://scenes/ui/gui.gd
 res://scenes/mine_field/mine_field.gd
-res://assets/assets.gd
 res://scenes/cell/cell.gd
+res://scenes/mine_field/mine_field.tscn
+res://scenes/player_camera/camera_2d.tscn
+res://scenes/ui/gui.tscn

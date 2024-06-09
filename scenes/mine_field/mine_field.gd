@@ -67,7 +67,7 @@ func _on_init(d, c):
 func _on_cell_flagged(flagged):
 	$gui.flag_update(flagged)
 
-# regular click
+# regular click, used for determining win condition
 func _on_cell_clicked(id):
 	if (id == -1):
 		lost()
@@ -120,12 +120,40 @@ func _on_initialize(v):
 	$gui.timer_start()
 
 # when revealing a 0, reveal adjacent cells
-func _on_zero_chain(v):
-	for u in adjacency_vectors:
-		var current_node = node_dict.get(v + u, null)
+func _on_zero_chain(v0):
+	
+	var nodes_checked = [v0] # keep track of opened nodes using their vector key
+	var node_border = [v0] # keep track of what nodes are at the border in order to expand on
+	var is_processing = true # true to first enter the loop 
+	
+	while is_processing:
+		var new_border = [] # generate the new node border
+		for v in node_border:
+			for u in adjacency_vectors:
+				var current_node = v + u
+				# only add if it's not on the list
+				if not (current_node in new_border or current_node in nodes_checked):
+					new_border.append(current_node)
 		
-		if current_node != null: # if adjacent cell exists, open it.
-			current_node.click()
+		# continue searching?
+		is_processing = false # assume false
+		
+		# replace node_border with only 0 cells (to later expand on)
+		var culled_new_border = []
+		for v in new_border:
+			if node_dict.get(v, null) != null: # only check if the node exists first
+				nodes_checked.append(v)
+				if field_dict[v] == 0: # if atleast one cell is 0
+					is_processing = true
+					# add to the culled list, erasing from other array would require to loop by index and subtract 1 for every removal (as to not skip)
+					culled_new_border.append(v) # numbers (and mines) will stop the opening
+					
+				# reveal cell if it's not a mine
+				if field_dict[v] != -1:
+					node_dict[v].click(false)
+		
+		# replace node_border variable (and no more stack overflows)
+		node_border = culled_new_border
 
 # Change sprites of adjacent cells
 func _on_chord_pressed(v):
