@@ -1,7 +1,6 @@
-res://scenes/cell/cell.tscn
-res://scenes/ui/gui.gd
-res://scenes/mine_field/mine_field.gd
-res://scenes/cell/cell.gd
 res://scenes/mine_field/mine_field.tscn
+res://scenes/ui/gui.gd
+res://scenes/cell/cell.tscn
 res://scenes/player_camera/camera_2d.tscn
 res://scenes/ui/gui.tscn
+res://scenes/cell/cell.gd

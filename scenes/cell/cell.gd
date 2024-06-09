@@ -81,6 +81,9 @@ func click(is_emitting:bool = true):
 				zero_chain.emit(v)
 			
 			clicked.emit(id)
+			
+			if id == -1:
+				set_process(false)
 
 # special click function in order to not generate
 
