@@ -1,6 +1,6 @@
 # Regular Minesweeper
 Mostly made in order to gain experience using the godot engine for future projects.
-Particular one idea expands on Minesweeper so I thought it'd be good to have the mechanics of regular minesweeper down to use as a base.
+Particularly, one idea expands on Minesweeper so I thought it'd be good to have the mechanics of regular minesweeper down to use as a base.
 
 # Classes Breakdown
 
