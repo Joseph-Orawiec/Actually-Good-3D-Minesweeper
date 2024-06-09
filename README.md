@@ -2,8 +2,13 @@
 Mostly made in order to gain experience using the godot engine for future projects.
 Particularly, one idea expands on Minesweeper so I thought it'd be good to have the mechanics of regular minesweeper down to use as a base.
 
-# Classes Breakdown
+# Compiling and Running
+The most recent release has a playable version in browser and an executable.
+https://github.com/Joseph-Orawiec/regular-minesweeper/releases/tag/v1.0.2
 
+To edit in godot, import the project and select the folder.
+
+# Classes Breakdown
 ## Cell.gd
 This represents an arbitrary cell, containing methods and signals that have to do with a cell in the mine field.
 It has an ID to mark what it contains and will handle all the logic that comes with clicking, flagging, chording, a zero open, and responding to when a win/lost state is achieved.
