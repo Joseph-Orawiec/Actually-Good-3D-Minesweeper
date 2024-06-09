@@ -3,7 +3,7 @@ Mostly made in order to gain experience using the godot engine for future projec
 Particularly, one idea expands on Minesweeper so I thought it'd be good to have the mechanics of regular minesweeper down to use as a base.
 
 # Compiling and Running
-The most (recent release)[https://github.com/Joseph-Orawiec/regular-minesweeper/releases/tag/v1.0.2] has a playable version in browser and an executable.
+The most [recent release](https://github.com/Joseph-Orawiec/regular-minesweeper/releases/tag/v1.0.2) has a playable version in browser and an executable.
 
 
 To edit in godot, import the project and select the folder.
