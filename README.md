@@ -1,6 +1,7 @@
 # Regular Minesweeper
 Mostly made in order to gain experience using the godot engine for future projects.
 Particularly, one idea expands on Minesweeper so I thought it'd be good to have the mechanics of regular minesweeper down to use as a base.
+Originally was the N-Dimensional-Minesweeper repository but i decided to upload it to Github which is why there's not many commits.
 
 # Compiling and Running
 The most [recent release](https://github.com/Joseph-Orawiec/regular-minesweeper/releases/tag/v1.0.2) has a playable version in browser and an executable.
